@@ -12,7 +12,7 @@ help() {
 
 install() {
   pm install -y podman
-  if [ "$?" = "0" ]; then
+  if [ "$?" != "0" ]; then
     log::error "failed to install podman ."
     return 1
   fi
@@ -20,14 +20,14 @@ install() {
   if [ "$(os::is_macos)" = "true" ]; then
     log::info "init podman machine ..."
     podman machine init
-    if [ "$?" = "0" ]; then
+    if [ "$?" != "0" ]; then
       log::error "failed to init podman ."
       return 1
     fi
 
     log::info "start podman machine ..."
     podman machine start
-    if [ "$?" = "0" ]; then
+    if [ "$?" != "0" ]; then
       log::error "failed to start podman ."
       return 1
     fi
