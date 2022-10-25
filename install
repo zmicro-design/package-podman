@@ -1,0 +1,37 @@
+#!/bin/bash
+
+VERSION=v0.0.0
+
+set -e
+
+help() {
+  echo "Usage:"
+  echo "  zmicro package install podman <args...>"
+  echo ""
+}
+
+install() {
+  pm install -y podman
+}
+
+core() {
+  if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+    help
+    exit 0
+  fi
+
+  install
+  if [ $? -eq 0 ]; then
+    log::success "install podman success."
+    exit 0
+  else
+    log::error "install podman failed."
+    exit 1
+  fi
+}
+
+run() {
+  core $@
+}
+
+run $@
