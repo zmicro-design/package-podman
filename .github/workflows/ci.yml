@@ -53,7 +53,7 @@ jobs:
 
     steps:
       - name: Install Zmicro
-        run: curl -o- https://raw.githubusercontent.com/zcorky/zmicro/master/install | bash
+        run: curl -o- https://raw.githubusercontent.com/zcorky/zmicro/master/install | CI=true bash
 
       - name: Update Zmicro
         run: zmicro update -a
