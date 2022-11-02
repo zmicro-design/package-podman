@@ -11,8 +11,6 @@ help() {
 }
 
 install() {
-  pm update -y
-
   pm install -y podman
   if [ "$?" != "0" ]; then
     log::error "failed to install podman ."
